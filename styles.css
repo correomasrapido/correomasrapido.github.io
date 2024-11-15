@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    color: #fff;
+    background: linear-gradient(45deg, #0d0d0d, #1e1e1e);
+    background-image: url('https://cdn.pixabay.com/photo/2015/04/20/00/14/venice-730467_1280.jpg');
+    background-size: cover;
+    background-blend-mode: multiply;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Oscurecer ligeramente para resaltar texto */
+    z-index: 1;
+}
+
+.container {
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    text-shadow: 0 0 20px #ff073a, 0 0 30px #ff073a, 0 0 40px #ff073a;
+    letter-spacing: 2px;
+    animation: neon 2s infinite alternate;
+}
+
+@keyframes neon {
+    from {
+        text-shadow: 0 0 10px #ff073a, 0 0 20px #ff073a, 0 0 30px #ff073a;
+    }
+    to {
+        text-shadow: 0 0 20px #ff073a, 0 0 30px #ff4500, 0 0 50px #ff4500;
+    }
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.countdown div {
+    background: rgba(255, 0, 0, 0.9);
+    padding: 20px 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+}
+
+.countdown div:hover {
+    transform: scale(1.1);
+}
+
+.countdown div span {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #0ff; /* Neón azul para los números */
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+}
+
+.countdown div small {
+    font-size: 1rem;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+footer {
+    position: absolute;
+    bottom: 20px;
+    font-size: 1rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+.controls button {
+    background: #ff073a;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.controls button:hover {
+    background: #ff4500;
+}
