@@ -3,98 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Envío de Correos</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Formulario Avanzado de Envío de Correos</title>
     <style>
+        /* Estilos para hacer la interfaz atractiva y funcional en dispositivos móviles */
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f9;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
         }
         .container {
+            width: 100%;
             max-width: 600px;
-            width: 90%;
-            background-color: #fff;
+            margin: 20px auto;
             padding: 20px;
+            background: #fff;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         h2 {
             text-align: center;
             color: #333;
-            margin-bottom: 20px;
         }
         label {
-            display: block;
-            margin: 10px 0 5px;
-            color: #555;
             font-weight: bold;
+            margin: 10px 0 5px;
+            display: block;
         }
-        input, textarea {
+        input[type="text"], textarea {
             width: 100%;
             padding: 10px;
-            margin-bottom: 15px;
+            margin: 10px 0;
             border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
-        input:focus, textarea:focus {
-            border-color: #007bff;
-            outline: none;
+        textarea {
+            resize: vertical;
         }
         .btn {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 15px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-align: center;
+            border-radius: 4px;
             cursor: pointer;
-            border-radius: 5px;
             width: 100%;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
+            border: none;
         }
         .btn:hover {
-            background-color: #0056b3;
+            background-color: #218838;
         }
-        .g-recaptcha {
-            margin-bottom: 15px;
+        .error {
+            color: red;
+            display: none;
         }
-        @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-            }
-            input, textarea {
-                font-size: 14px;
-            }
-            .btn {
-                font-size: 14px;
-            }
+        .success {
+            color: green;
         }
     </style>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        // Validación en el frontend usando JavaScript
+        function validateForm(event) {
+            event.preventDefault();
+
+            let isValid = true;
+            const emailField = document.getElementById('emails');
+            const subjectField = document.getElementById('subject');
+            const messageField = document.getElementById('message');
+            const emailError = document.getElementById('emailError');
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            emailError.style.display = 'none';
+
+            // Validación de los correos
+            let emails = emailField.value.split(',').map(email => email.trim());
+            if (emails.some(email => !emailPattern.test(email))) {
+                emailError.style.display = 'block';
+                isValid = false;
+            }
+
+            // Validar que el asunto y mensaje no estén vacíos
+            if (!subjectField.value.trim() || !messageField.value.trim()) {
+                alert("El asunto y el mensaje no pueden estar vacíos.");
+                isValid = false;
+            }
+
+            // Si es válido, envía el formulario
+            if (isValid) {
+                document.getElementById('emailForm').submit();
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="container">
-        <h2>Envío de Correos</h2>
-        <form id="emailForm" action="/send-email" method="POST">
-            <label for="emails"><i class="fas fa-user"></i> Destinatarios (separados por comas):</label>
+        <h2>Formulario de Envío de Correos</h2>
+        <form id="emailForm" action="/send-email" method="POST" onsubmit="validateForm(event)">
+            <label for="emails">Destinatarios (separados por comas):</label>
             <textarea id="emails" name="emails" placeholder="ejemplo1@correo.com, ejemplo2@correo.com"></textarea>
+            <div id="emailError" class="error">Por favor, ingrese correos válidos separados por comas.</div>
 
-            <label for="subject"><i class="fas fa-envelope"></i> Asunto:</label>
+            <label for="subject">Asunto:</label>
             <input type="text" id="subject" name="subject" placeholder="Escribe el asunto aquí" required>
 
-            <label for="message"><i class="fas fa-comment-dots"></i> Mensaje:</label>
+            <label for="message">Mensaje:</label>
             <textarea id="message" name="message" placeholder="Escribe tu mensaje aquí" required></textarea>
 
-            <!-- Recaptcha -->
-            <div class="g-recaptcha" data-sitekey="TU_CLAVE_SITIO_RECAPTCHA"></div>
-
-            <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Enviar Correos</button>
+            <button type="submit" class="btn">Enviar Correos</button>
         </form>
     </div>
 </body>
