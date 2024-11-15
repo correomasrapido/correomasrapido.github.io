@@ -3,237 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Contacto - Empresa Premium</title>
-    <style>
-        /* Estilos globales */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSouyOSi-_aAOo02kZRdpZMn9PYiNJbfiTnjw&s');
-            background-size: cover;
-            background-position: center center;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px;
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-            margin-top: 50px;
-        }
-
-        h1 {
-            text-align: center;
-            font-size: 2.5em;
-            color: #f4b400;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        label {
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-bottom: 10px;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0 20px 0;
-            border-radius: 5px;
-            border: 2px solid #f4b400;
-            font-size: 1.1em;
-            background-color: #fff;
-        }
-
-        button {
-            background-color: #f4b400;
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            font-size: 1.2em;
-            cursor: pointer;
-            border-radius: 5px;
-            width: 100%;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #f7d400;
-        }
-
-        /* Estilo para campos honeypot invisibles */
-        .honeypot {
-            display: none;
-        }
-
-        /* Estilos para mensajes de éxito/error */
-        .error-message, .success-message {
-            display: none;
-            text-align: center;
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        .error-message {
-            background-color: #ff4d4d;
-            color: #fff;
-        }
-
-        .success-message {
-            background-color: #4CAF50;
-            color: #fff;
-        }
-
-        /* Responsividad */
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-
-            h1 {
-                font-size: 2em;
-            }
-
-            button {
-                font-size: 1em;
-            }
-        }
-
-        /* Botones para compartir en redes sociales */
-        .social-buttons {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .social-buttons a {
-            margin: 0 10px;
-            text-decoration: none;
-            font-size: 1.5em;
-            color: #fff;
-            background-color: #333;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .social-buttons a:hover {
-            background-color: #f4b400;
-        }
-
-        .language-select {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-radius: 5px;
-            color: #fff;
-        }
-
-        .language-select select {
-            background-color: #fff;
-            border: none;
-            padding: 5px;
-            color: #333;
-        }
-    </style>
+    <title>Cuenta Regresiva - Fin del Mundo</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Vinculación al archivo CSS -->
 </head>
 <body>
-
-    <!-- Selector de idioma -->
-    <div class="language-select">
-        <label for="language">Idioma:</label>
-        <select id="language" onchange="changeLanguage()">
-            <option value="es">Español</option>
-            <option value="en">English</option>
-        </select>
-    </div>
-
+    <div class="overlay"></div>
     <div class="container">
-        <h1>Contáctanos</h1>
-        <form action="https://formsubmit.co/el/ripexi" method="POST" id="contact-form">
-            <!-- Honeypot -->
-            <div class="honeypot">
-                <label for="website">Deja este campo vacío si eres humano</label>
-                <input type="text" id="website" name="website" placeholder="Tu respuesta será ignorada">
+        <!-- Título con efecto neon -->
+        <h1>El Fin del Mundo Se Acerca</h1>
+
+        <!-- Sección de la cuenta regresiva -->
+        <div class="countdown" id="countdown">
+            <div>
+                <span id="years">00</span>
+                <small>Años</small>
             </div>
-
-            <!-- Campos de contacto -->
-            <label for="emails" id="label-emails">Correos Electrónicos (separados por comas):</label>
-            <input type="text" id="emails" name="emails" placeholder="ejemplo1@correo.com, ejemplo2@correo.com" required>
-
-            <label for="subject" id="label-subject">Asunto:</label>
-            <input type="text" id="subject" name="subject" placeholder="Escribe el asunto aquí" required>
-
-            <label for="message" id="label-message">Mensaje:</label>
-            <textarea id="message" name="message" rows="6" placeholder="Escribe tu mensaje aquí" required></textarea>
-
-            <!-- Botón de envío -->
-            <button type="submit">Enviar Mensaje</button>
-        </form>
-
-        <!-- Mensajes de estado -->
-        <div class="error-message" id="error-message">Hubo un error al enviar el mensaje. Intenta de nuevo más tarde.</div>
-        <div class="success-message" id="success-message">¡Mensaje enviado correctamente!</div>
-
-        <!-- Botones de redes sociales -->
-        <div class="social-buttons">
-            <a href="https://wa.me/?text=¡Quiero ponerme en contacto contigo!" target="_blank" title="Compartir en WhatsApp">📱 WhatsApp</a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://tu-sitio-web.com" target="_blank" title="Compartir en Facebook">📘 Facebook</a>
-            <a href="https://www.instagram.com/?url=https://tu-sitio-web.com" target="_blank" title="Compartir en Instagram">📸 Instagram</a>
+            <div>
+                <span id="days">000</span>
+                <small>Días</small>
+            </div>
+            <div>
+                <span id="hours">00</span>
+                <small>Horas</small>
+            </div>
+            <div>
+                <span id="minutes">00</span>
+                <small>Minutos</small>
+            </div>
+            <div>
+                <span id="seconds">00</span>
+                <small>Segundos</small>
+            </div>
+            <div>
+                <span id="milliseconds">000</span>
+                <small>Milisegundos</small>
+            </div>
+        </div>
+        
+        <!-- Botón para pausar la música -->
+        <div class="controls">
+            <button id="toggleMusic">⏸ Pausar Música</button>
         </div>
     </div>
 
-    <script>
-        // Cambiar el idioma del contenido
-        function changeLanguage() {
-            const lang = document.getElementById('language').value;
+    <!-- Mensaje de pie de página -->
+    <footer>Corre mientras puedas... El tiempo no espera. ⏳</footer>
 
-            if (lang === 'en') {
-                document.getElementById('label-emails').innerText = "Email Addresses (separated by commas):";
-                document.getElementById('label-subject').innerText = "Subject:";
-                document.getElementById('label-message').innerText = "Message:";
-                document.querySelector("h1").innerText = "Contact Us";
-                document.querySelector("button").innerText = "Send Message";
-            } else {
-                document.getElementById('label-emails').innerText = "Correos Electrónicos (separados por comas):";
-                document.getElementById('label-subject').innerText = "Asunto:";
-                document.getElementById('label-message').innerText = "Mensaje:";
-                document.querySelector("h1").innerText = "Contáctanos";
-                document.querySelector("button").innerText = "Enviar Mensaje";
-            }
-        }
+    <!-- Reproductor de música -->
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="https://cdn.pixabay.com/audio/2024/10/01/audio_d538e5fb0f.mp3" type="audio/mpeg">
+        Tu navegador no soporta audio HTML5.
+    </audio>
 
-        // Validación de correos y procesamiento del formulario
-        document.getElementById("contact-form").addEventListener("submit", function(event) {
-            const emails = document.getElementById("emails").value.split(',').map(email => email.trim());
-            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            let validEmails = emails.filter(email => emailRegex.test(email));
-
-            // Limitar a 50 correos
-            if (validEmails.length > 50) {
-                event.preventDefault();
-                alert("Solo puedes enviar a un máximo de 50 correos.");
-                return;
-            }
-
-            // Mostrar mensajes
-            if (validEmails.length === 0) {
-                event.preventDefault();
-                document.getElementById("error-message").style.display = 'block';
-            } else {
-                document.getElementById("success-message").style.display = 'block';
-            }
-        });
-    </script>
-
+    <!-- Enlace al archivo JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
