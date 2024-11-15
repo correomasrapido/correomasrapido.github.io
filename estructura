@@ -1,4 +1,4 @@
 /mi-pagina
-    /index.html
-    /script.js
-    /styles.css
+    /index.html   <!-- Página principal con anuncios -->
+    /script.js    <!-- JavaScript para la cuenta regresiva y otras funcionalidades -->
+    /styles.css   <!-- Estilos de la página -->
