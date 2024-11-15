@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Envío de Correos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            width: 90%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input:focus, textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .g-recaptcha {
+            margin-bottom: 15px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            input, textarea {
+                font-size: 14px;
+            }
+            .btn {
+                font-size: 14px;
+            }
+        }
+    </style>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Envío de Correos</h2>
+        <form id="emailForm" action="/send-email" method="POST">
+            <label for="emails"><i class="fas fa-user"></i> Destinatarios (separados por comas):</label>
+            <textarea id="emails" name="emails" placeholder="ejemplo1@correo.com, ejemplo2@correo.com"></textarea>
+
+            <label for="subject"><i class="fas fa-envelope"></i> Asunto:</label>
+            <input type="text" id="subject" name="subject" placeholder="Escribe el asunto aquí" required>
+
+            <label for="message"><i class="fas fa-comment-dots"></i> Mensaje:</label>
+            <textarea id="message" name="message" placeholder="Escribe tu mensaje aquí" required></textarea>
+
+            <!-- Recaptcha -->
+            <div class="g-recaptcha" data-sitekey="TU_CLAVE_SITIO_RECAPTCHA"></div>
+
+            <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Enviar Correos</button>
+        </form>
+    </div>
+</body>
+</html>
