@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name='admaven-placement' content=Bqdr6rTgF>
+    <meta name='admaven-placement' content='Bqdr6rTgF'>
     <title>Cuenta Regresiva - Fin del Mundo</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Vinculación al archivo CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="overlay"></div>
@@ -40,10 +40,31 @@
                 <small>Milisegundos</small>
             </div>
         </div>
-        
+
         <!-- Botón para pausar la música -->
         <div class="controls">
             <button id="toggleMusic">⏸ Pausar Música</button>
+        </div>
+
+        <!-- Botones de compartir -->
+        <div class="share-buttons">
+            <button onclick="shareOnFacebook()">Compartir en Facebook</button>
+            <button onclick="shareOnTwitter()">Compartir en Twitter</button>
+            <button onclick="shareOnWhatsApp()">Compartir en WhatsApp</button>
+        </div>
+
+        <!-- Espacio para anuncios -->
+        <div class="ads">
+            <!-- Primer bloque de anuncio -->
+            <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1119627"></script>
+            <!-- Segundo bloque de anuncio -->
+            <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1119627"></script>
+            <!-- Tercer bloque de anuncio -->
+            <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1119630"></script>
+            <!-- Cuarto bloque de anuncio -->
+            <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1119631"></script>
+            <!-- Quinto bloque de anuncio -->
+            <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1119633"></script>
         </div>
     </div>
 
@@ -52,7 +73,7 @@
 
     <!-- Reproductor de música -->
     <audio id="backgroundMusic" autoplay loop>
-        <source src="https://radio24h.com">
+        <source src="https://cdn.pixabay.com/audio/2024/10/01/audio_d538e5fb0f.mp3" type="audio/mpeg">
         Tu navegador no soporta audio HTML5.
     </audio>
 
