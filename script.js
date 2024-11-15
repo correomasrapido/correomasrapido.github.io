@@ -1,22 +1,14 @@
-// Función para la cuenta regresiva
+// Inicializa la fecha de la entrada del usuario
+const startDate = new Date(); // Tomamos la fecha y hora actuales cuando el usuario entra a la página
+
+// Configura la fecha de destino (28 años después de la fecha de inicio)
+const targetDate = new Date(startDate);
+targetDate.setFullYear(startDate.getFullYear() + 28); // Agregar 28 años a la fecha de inicio
+
+// Función para actualizar la cuenta regresiva
 function countdownTimer() {
     const now = new Date();
-    const utcNow = new Date(
-        now.getUTCFullYear(),
-        now.getUTCMonth(),
-        now.getUTCDate(),
-        now.getUTCHours(),
-        now.getUTCMinutes(),
-        now.getUTCSeconds(),
-        now.getUTCMilliseconds()
-    );
-
-    // Establecer la fecha objetivo (28 años a partir del día actual)
-    const targetDate = new Date(utcNow);
-    targetDate.setUTCFullYear(targetDate.getUTCFullYear() + 28); // 28 años de cuenta regresiva
-    targetDate.setUTCHours(0, 0, 0, 0); // Al inicio del día (00:00:00)
-
-    const difference = targetDate - utcNow;
+    const difference = targetDate - now;
 
     if (difference <= 0) {
         document.getElementById("countdown").innerHTML = "<h2>El Apocalipsis ha comenzado...</h2>";
@@ -31,7 +23,7 @@ function countdownTimer() {
     const seconds = Math.floor((difference % (1000 * 60)) / 1000);
     const milliseconds = Math.floor((difference % 1000) / 10);
 
-    // Mostrar los resultados de la cuenta regresiva en la página
+    // Actualizar el contenido de la cuenta regresiva
     document.getElementById("years").textContent = String(years).padStart(2, "0");
     document.getElementById("days").textContent = String(days).padStart(3, "0");
     document.getElementById("hours").textContent = String(hours).padStart(2, "0");
@@ -56,3 +48,24 @@ toggleButton.addEventListener("click", () => {
         toggleButton.textContent = "▶ Reanudar Música";
     }
 });
+
+// Funciones para compartir en redes sociales
+function shareOnFacebook() {
+    const url = encodeURIComponent(window.location.href);
+    const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+    window.open(shareUrl, '_blank');
+}
+
+function shareOnTwitter() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("¡Mira la cuenta regresiva hacia el fin del mundo!");
+    const shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
+    window.open(shareUrl, '_blank');
+}
+
+function shareOnWhatsApp() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("¡Mira la cuenta regresiva hacia el fin del mundo!");
+    const shareUrl = `https://wa.me/?text=${text}%20${url}`;
+    window.open(shareUrl, '_blank');
+}
